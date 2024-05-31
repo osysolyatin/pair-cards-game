@@ -1,0 +1,127 @@
+@import url("modal.css");
+@import url("fonts.css");
+@import url("modal-form.css");
+@import url("countdown.css");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: GoogleSans;
+  font-weight: 400;
+}
+
+:root {
+  --gap: 20px;
+  --rowCount: 4;
+  --fontSize: 42px;
+  --translateX: -11px;
+  --translateY: -2px;
+  --backfaceWidth: 50px;
+  --backfaceHeight: 50px;
+}
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+  padding: 30px 15px;
+  margin: 0 auto;
+}
+
+.cards-wrapper {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-basis: calc(100% / var(--rowCount) - var(--gap));
+  flex-grow: 1;
+  flex-shrink: 0;
+  height: calc((100vh - 210px) / var(--rowCount) - var(--gap));
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: var(--fontSize);
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  /* background: rgb(131, 58, 180); */
+  background: linear-gradient(
+    90deg,
+    rgba(131, 58, 180, 1) 0%,
+    rgba(253, 29, 29, 1) 50%,
+    rgba(252, 176, 69, 1) 100%
+  );
+  color: white;
+  cursor: pointer;
+  transform: rotateY(0);
+  transition: background-color 0.3s, transform 0.3s;
+  /* background: 0.3s linear; */
+}
+
+.card:hover {
+  opacity: 0.65;
+}
+
+.card.open {
+  background: rgb(250, 122, 2);
+  transform: rotateY(180deg);
+}
+
+.card.open:hover {
+  opacity: 1;
+}
+
+.card__back {
+  z-index: 1;
+  position: absolute;
+  transition: transform 1.3s cubic-bezier(0.2, 0.85, 0.4, 1.275);
+  backface-visibility: hidden;
+}
+
+.card__back:before {
+  content: "";
+  position: absolute;
+  width: var(--backfaceWidth);
+  height: var(--backfaceHeight);
+  background-color: transparent;
+  transform: scale(1.5) translateX(var(--translateX))
+    translateY(var(--translateY));
+  transform-origin: center;
+  border: 1px solid white;
+  border-radius: 100%;
+}
+
+.card__front {
+  z-index: 1;
+  transform: rotateY(180deg);
+  position: relative;
+  backface-visibility: hidden;
+  transition: transform 1.3s cubic-bezier(0.2, 0.85, 0.4, 1.275);
+}
+
+.card.open .card__front {
+  transform: rotateY(180deg);
+  backface-visibility: visible;
+}
+
+.card.open .card__back {
+  z-index: 0;
+  transform: rotateY(180deg);
+}
+
+.card.open.success {
+  background-color: rgb(45 156 5);
+  transform: scale(0.95);
+  cursor: default;
+}
+
+.card.success .card__front {
+  transform: rotateY(0);
+}

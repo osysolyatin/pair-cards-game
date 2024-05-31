@@ -1,0 +1,48 @@
+.title {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 30px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 150px; */
+  width: 30vw;
+  margin: 0 auto 20px;
+}
+
+.countdown {
+  width: 100%;
+  height: 100%;
+  /* background-color: rgba(0, 0, 0, 0.2); */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  border-radius: 20px;
+  background: linear-gradient(
+    90deg,
+    rgba(131, 58, 180, 1) 0%,
+    rgba(253, 29, 29, 1) 50%,
+    rgba(252, 176, 69, 1) 100%
+  );
+  color: white;
+}
+
+.num {
+  font-size: 2rem;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.name {
+  display: block;
+  width: 150px;
+  text-align: center;
+}
